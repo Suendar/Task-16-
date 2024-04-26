@@ -1,0 +1,84 @@
+TASK 16 
+
+Ans 1
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class FirefoxScript {
+    public static void main(String[] args) {
+         
+     WebDriver driver = new FirefoxDriver();
+
+      driver.manage().window().maximize();
+
+      driver.get("http://google.com");
+
+      System.out.println("Current URL: " + driver.getCurrentUrl());
+
+      driver.navigate().refresh();
+
+      try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+         
+        driver.quit();
+    }
+}
+
+ans 2 
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DemoBlazeTest {
+    public static void main(String[] args) {
+         
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.demoblaze.com/");
+        String expectedTitle = "STORE";
+        String actualTitle = driver.getTitle();
+        if (actualTitle.equals(expectedTitle)) {
+            System.out.println("Page landed on correct website");
+        } else {
+            System.out.println("Page not landed on correct website");
+        }
+
+        driver.quit();
+    }
+}
+
+ans 3
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WikipediaSearch {
+    public static void main(String[] args) {
+         
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver/chromedriver");
+
+       WebDriver driver = new ChromeDriver();
+       driver.manage().window().maximize();
+       driver.get("https://www.wikipedia.org/");
+       WebElement searchInput = driver.findElement(By.id("searchInput"));
+       searchInput.sendKeys("Artificial Intelligence");
+        WebElement searchButton = driver.findElement(By.id("searchButton"));
+        searchButton.click();
+        WebElement historyLink = driver.findElement(By.linkText("History"));
+        historyLink.click();
+        String sectionTitle = driver.getTitle();
+        System.out.println("Title of the History section: " + sectionTitle);
+        driver.quit();
+    }
+}
+
+
+
+
